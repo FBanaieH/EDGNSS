@@ -1,0 +1,37 @@
+syntax = "proto3";
+option java_package = "org.onosproject.grpc.models";
+
+package proto;
+
+import "PacketContextProto.proto";
+import "LinkEventProto.proto";
+
+message RegistrationRequest {
+  string clientId = 1;
+}
+
+message RegistrationResponse {
+  string clientId = 1;
+  string serverId = 2;
+}
+
+enum topicType {
+  PACKET_EVENT = 0;
+  LINK_EVENT = 1;
+}
+
+message Topic {
+  string clientId = 1;
+  topicType type = 2;
+}
+
+message Notification {
+  string clientId = 1;
+  string serverId = 2;
+  topicType type = 3;
+  oneof event {
+    PacketContextProto packetContext = 4;
+    LinkNotificationProto linkEvent = 5;
+
+  }
+}

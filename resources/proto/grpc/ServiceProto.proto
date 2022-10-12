@@ -1,0 +1,19 @@
+syntax = "proto3";
+option java_package = "org.onosproject.grpc.models";
+
+package proto;
+
+import "OutboundPacketProto.proto";
+import "EventNotificationProto.proto";
+import "StatusProto.proto";
+import "ControlMessagesProto.proto";
+import "ConnectPointProto.proto";
+import "EventListenerProto.proto";
+
+
+//Corresponds to EventListener service
+service EventListener {
+  rpc regEvent (RegRequest) returns (RegResponse);
+  rpc onEvents (TopicE) returns (stream Listener);
+  rpc emitEvent (OutboundPacketProto) returns (PacketOutStatus);
+}

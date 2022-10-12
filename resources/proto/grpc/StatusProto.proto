@@ -1,0 +1,12 @@
+syntax = "proto3";
+option java_package = "org.onosproject.grpc.models";
+
+package proto;
+
+message PacketOutStatus {
+  bool stat = 1;
+}
+
+message FlowServiceStatus {
+  bool stat = 1;
+}
